@@ -1,23 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: nginx
-  name: nginx
+  name: nginxdeploymentservice
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nginx
-  strategy: {}
-  template:
+  template: #pod def. & if add you want to replica so add
     metadata:
+      name: nginxdeploymentservice
       labels:
-        app: nginx
+        app: nginxdeploymentservice
+        type: webServerservice
     spec:
       containers:
-      - image: nginx
-        name: nginx
-        imagePullPolicy: Always
-        ports: 
-        - containerPort: 80
+        - name: nginxdeploymentservice
+          image: nginx
+          ports:
+            - containerPort: 80
+  selector:
+    matchLabels:
+      type: webServerservice

@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: nginxdeploymentservice
 spec:
+  replicas: 5
   template: #pod def. & if add you want to replica so add
     metadata:
       name: nginxdeploymentservice
